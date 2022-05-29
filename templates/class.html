@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<title>Class</title>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+<!--===============================================================================================-->	
+	<link rel="icon" type="image/png" href="{{url_for('static',filename='images/icons/favicon.ico/')}}">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="{{url_for('static',filename='vendor/bootstrap/css/bootstrap.min.css')}}">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="{{url_for('static',filename='fonts/font-awesome-4.7.0/css/font-awesome.min.css')}}">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="{{url_for('static',filename='fonts/iconic/css/material-design-iconic-font.min.css')}}">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="{{url_for('static',filename='vendor/animate/animate.css')}}">
+<!--===============================================================================================-->	
+	<link rel="stylesheet" type="text/css" href="{{url_for('static',filename='vendor/css-hamburgers/hamburgers.min.css')}}">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="{{url_for('static',filename='vendor/animsition/css/animsition.min.css')}}">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="{{url_for('static',filename='vendor/select2/select2.min.css')}}">
+<!--===============================================================================================-->	
+	<link rel="stylesheet" type="text/css" href="{{url_for('static',filename='vendor/daterangepicker/daterangepicker.css')}}">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="{{url_for('static',filename='css/util.css')}}">
+	<link rel="stylesheet" type="text/css" href="{{url_for('static',filename='css/main.css')}}">
+<!--===============================================================================================-->
+</head>
+<body>
+	<nav class="navbar page-navbar navbar-dark navbar-expand-md fixed-top" data-spy="affix" data-offset-top="20">
+        <div class="container">
+            <a class="navbar-brand" href="#"><strong class="text-primary">YOUR</strong><span class="text-light">CLASS</span></a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="/">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/attendance">Attendance</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/action">Choose Action</a>
+                    </li>
+                    <!-- <li class="nav-item">
+                        <a class="nav-link btn btn-primary text-dark shadow-none ml-md-4" href="components.html">Components</a>
+                    </li> -->
+                </ul>
+            </div>
+        </div>
+    </nav>
+	<div class="limiter">
+		<!-- <div class="cshow" style="background-image: url('images/bg-01.jpg');"> -->
+			<div class="wrap-login2">
+                <br>
+                <br>
+                <br>
+					<span class="login100-form-logo">
+						<i class="zmdi zmdi-landscape"></i>
+					</span>
+
+					<span class="login100-form-title p-b-34 p-t-27">
+						Students
+					</span>
+                    {% if all|length==0 %}
+                    <strong><span class="txt2">No Records</span></strong>
+                    <div class="container-login100-form-btn">
+						<button class="login100-form-btn" type="submit">
+							Register
+						</button>
+					</div>
+                        {% else %}
+                        <div class="container-login100-form-btn">
+                            <a href="/register"><button class="login100-form-btn" type="submit">
+                                Register
+                            </button></a>
+                        </div>
+                        <br>
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <td align="center" style="color:white">S No</td>
+                                    <td align="center" style="color:white">Student ID</td>
+                                    <td align="center" style="color:white">Student Name</td>
+                                    <td align="center" style="color:white">Department</td>
+                                    <td align="center" style="color:white">Action</td>
+                                </tr>
+                                {% for s in all %}
+                                <tr>
+                                    <td align="center" style="color:white">{{loop.index}}</td>
+                                    <td align="center" style="color:white">{{s.stid}}</td>
+                                    <td align="center" style="color:white">{{s.name}}</td>
+                                    <td align="center" style="color:white">{{s.dept}}</td>
+                                    <td align="center">
+                                        <div class="container-login100-form-btn2">
+                                            <a href="\update\{{s.stid}}"><button class="login100-form-btn btn btn-primary btn-sm" type="submit">
+                                                Update
+                                            </button></a>
+                                            <a href="\delete\{{s.stid}}"><button class="login100-form-btn btn btn-primary btn-sm" type="submit">
+                                                Delete
+                                            </button></a>
+                                        </div>
+                                        
+                                    </td>
+                                </tr>
+                                {% endfor %}
+                            </thead>
+                        </table>
+                    {% endif %}
+                    
+					
+			</div>
+		</div>
+	</div>
+    
+	
+
+	<div id="dropDownSelect1"></div>
+	
+<!--===============================================================================================-->
+	<script src="{{url_for('static',filename='vendor/jquery/jquery-3.2.1.min.js')}}"></script>
+<!--===============================================================================================-->
+	<script src="{{url_for('static',filename='vendor/animsition/js/animsition.min.js')}}"></script>
+<!--===============================================================================================-->
+	<script src="{{url_for('static',filename='vendor/bootstrap/js/popper.js')}}"></script>
+	<script src="{{url_for('static',filename='vendor/bootstrap/js/bootstrap.min.js')}}"></script>
+<!--===============================================================================================-->
+	<script src="{{url_for('static',filename='vendor/select2/select2.min.js')}}"></script>
+<!--===============================================================================================-->
+	<script src="{{url_for('static',filename='vendor/daterangepicker/moment.min.js')}}"></script>
+	<script src="{{url_for('static',filename='vendor/daterangepicker/daterangepicker.js')}}"></script>
+<!--===============================================================================================-->
+	<script src="{{url_for('static',filename='vendor/countdowntime/countdowntime.js')}}"></script>
+<!--===============================================================================================-->
+	<script src="{{url_for('static',filename='js/main.js')}}"></script>
+
+</body>
+</html>
